@@ -1,7 +1,12 @@
+import Footer from "./Components/Footer";
 import "./App.css";
 
 function App() {
-  return <></>;
+  return (
+    <>
+      <Footer />
+    </>
+  );
 }
 
 export default App;
