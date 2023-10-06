@@ -4,6 +4,7 @@ import "./App.css";
 function App() {
   return (
     <>
+      <h1>Hello Trainer, welcome to PokéFight!</h1>
       <Footer />
     </>
   );
