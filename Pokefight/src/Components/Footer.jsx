@@ -25,7 +25,7 @@ export default function Footer() {
               <a href="/Resources">
                 <p>Resource Center</p>
               </a>
-              <a href="/Resources">
+              <a href="/PokéAPI">
                 <p>PokéAPI</p>
               </a>
               <a href="/Contact">
@@ -37,7 +37,7 @@ export default function Footer() {
             </div>
             <div className="sb__footer-links_div">
               <h4>Partner</h4>
-              <a href="/Partners">
+              <a href="/Company">
                 <p>Company</p>
               </a>
               <a href="/Sponsors">

@@ -4,8 +4,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 function App() {
-  const [poke, setPoke] = useState({}); //array of fetched pokes
-  const [randomPokeState, setRandomPokeState] = useState({}); //random poke
+  const [poke, setPoke] = useState([]); //array of fetched pokes
+  const [randomPokeState, setRandomPokeState] = useState([]); //random poke
 
   const fetchPoke = async () => {
     try {
