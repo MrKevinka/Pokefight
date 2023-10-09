@@ -1,5 +1,17 @@
 import Footer from "./Components/Footer";
 import "./App.css";
+
+import React from "react";
+import Navbar from "./Components/Navbar";
+
+function App() {
+  return (
+    <>   
+      <Navbar />
+      </>
+    
+  );
+  }
 import { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -52,4 +64,6 @@ function App() {
   );
 }
 
+
 export default App;
+
