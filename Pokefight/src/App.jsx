@@ -5,7 +5,7 @@ import Navbar from "./Components/Navbar";
 import { Routes, Route } from "react-router-dom";
 import Getallpokemons from "./Components/Getallpokemons";
 import Pokemondetail from "./Components/Pokemondetail";
-import Search from "./Components/Search";
+
 import { useContext } from "react";
 import { ThemeContext } from "./Context/ThemeContext";
 
@@ -13,12 +13,16 @@ import "./App.css";
 import PokemonImage from "./Components/PokemonImage";
 import PokemonPage from "./Components/Pokemonpage";
 import Fight from "./Components/Fight";
+import Search from "./Components/Search";
+import Spinner from "./Components/Spinner";
 
 function App() {
   const [{ theme, isDark }, toggleTheme] = useContext(ThemeContext);
   return (
     <>
-      {" "}
+      {/* <div id="cover-spin">
+        <Spinner />
+      </div>{" "} */}
       <div
         style={{ backgroundColor: theme.backgroundColor, color: theme.color }}
       >
@@ -33,7 +37,6 @@ function App() {
 
         <Route path="/Pokemon/:name/:type" element={<Fight />} />
       </Routes>
-      <Search />
       <Navbar />
       <Footer />
     </>
