@@ -1,6 +1,9 @@
 import Footer from "./Components/Footer";
 import "./App.css";
 
+import Navbar from "./Components/Navbar";
+
+
 import { Routes, Route } from "react-router-dom";
 import Getallpokemons from "./Components/Getallpokemons";
 import Pokemondetail from "./Components/Pokemondetail";
@@ -12,6 +15,7 @@ import "./App.css";
 import PokemonImage from "./Components/PokemonImage";
 import PokemonPage from "./Components/Pokemonpage";
 import Fight from "./Components/Fight";
+
 import Navbar from "./Components/Navbar";
 import Leaderboard from "./Components/Leaderboad";
 import EnterYourNameModule from "./Components/CreatingUser";
@@ -62,7 +66,11 @@ function App() {
     console.log("poke is", fullPokeInfo);
   }, [poke]);
 
-  //element ends here
+
+
+function App() {
+  const [{ theme, isDark }, toggleTheme] = useContext(ThemeContext);
+
   return (
     <>
       {" "}
@@ -73,6 +81,7 @@ function App() {
         <br />
       </div>{" "}
       <button onClick={toggleTheme}>Toggle Theme</button>
+
       <Navbar />
       <Routes>
         <Route path="/pokemon" element={<Getallpokemons />} />
@@ -96,22 +105,21 @@ function App() {
         {/* <Route path="/Pokemon/:name/:type" element={<Fight />} /> */}
         {/* <Route path="/Pokemon/fight" element={<Fight />} /> */}
       </Routes>
-      {/* <Search /> */}
+       <Search /> 
+
+      <Routes>
+        <Route path="/pokemon" element={<Getallpokemons />} />
+
+        {/* <Route path="/Pokemon/:name/:type" element={ <PokemonPage/>} /> */}
+
+        <Route path="/Pokemon/:name/:type" element={<Fight />} />
+      </Routes>
+      <Search />
+      <Navbar />
+
       <Footer />
     </>
   );
 
-  // import React from "react";
-  // import Navbar from "./Components/Navbar";
-
-  // function App() {
-  //   return (
-  //     <>
-
-  //       </>
-
-  //   );
-  //   }
-}
-
+  
 export default App;
