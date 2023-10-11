@@ -30,9 +30,9 @@ export default function Footer() {
               </a>
               <a href="/Contact">
                 <p>Contact</p>
-                <a href="/About">
-                  <p>About us</p>
-                </a>
+              </a>
+              <a href="/About">
+                <p>About us</p>
               </a>
             </div>
             <div className="sb__footer-links_div">

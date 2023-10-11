@@ -15,7 +15,7 @@ export default function Search() {
     if (loading) {
       setTimeout(() => {
         setLoading(false);
-      }, 2000);
+      }, 5000);
     }
     async function getData() {
       try {
@@ -42,7 +42,7 @@ export default function Search() {
     }
 
     getData();
-  }, [Find, loading]);
+  }, [Find]);
 
   const Typename = (event) => {
     setname(event.target.value);

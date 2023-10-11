@@ -18,7 +18,7 @@ h2 {
   text-decoration: none;
 }
 h2 {
-  box-shadow: inset 0 0 0 0 #43bbe6;
+  box-shadow: inset 0 0 0 0 #319bc2;
   color: #54b3d6;
   padding: 0 0.25rem;
   margin: 0 -0.25rem;
@@ -26,7 +26,7 @@ h2 {
 }
 
 h2:hover {
-  box-shadow: inset 200px 0 0 0 rgb(1, 216, 216);
+  box-shadow: inset 200px 0 0 0 teal;
 }
 
 .heading_pokedex {

@@ -1,49 +1,55 @@
-
 /****-----Navbar---****/
-.nav-container{
-  border-color: black;
-display: flex;
-background-color:rgba(25, 73, 232, 0.768);
+.nav-container {
+  border-color: white;
+  display: flex;
+  /* background-color: rgba(25, 73, 232, 0.768); */
+  border-bottom: 2px solid grey;
 }
-.nav-icon{
+.nav-icon {
   display: flex;
   justify-content: space-between;
   margin-left: 50%;
   margin-top: 20px;
 }
-.image{
+.image {
   margin-top: 20px;
-  margin-left:20px ;
+  margin-left: 20px;
 }
 .image img {
   max-height: 160px;
   max-width: 160px;
 }
-.nav-icon ul{
+.nav-icon ul {
   display: flex;
   font-size: 2rem;
- list-style: none;
- justify-content: space-between;
- align-items: center;
-    }
-   p {
+  list-style: none;
+  justify-content: space-between;
+  align-items: center;
+}
+/* p {
       font-size: 2rem;
       color: black;
 
-    }
+    } */
 .nav-icon ul li {
   justify-content: space-around;
   display: flex;
-  color:black;
+  color: white;
   margin-left: 30px;
-  border: 2px solid black;
+  border: 2px solid white;
 }
-.header-container{
+.header-container {
   margin-top: 10px;
 }
-.header-container img{
-max-width: 100%;
-min-height:1200px;
-
+.header-container img {
+  max-width: 100%;
+  min-height: 1200px;
 }
-
+.image {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0.5%;
+}

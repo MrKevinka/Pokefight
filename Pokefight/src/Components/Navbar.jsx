@@ -1,28 +1,26 @@
 import React from "react";
-
+import { Link, Routes, Route } from "react-router-dom";
 
 const Navbar = () => {
-return ( 
- <>
-<div className="nav-container">
-  <div className="image">
-  <img src="src/images/pokemonlogo.png" alt="" />
-  <p>POKEFIGHT</p>
-  </div>
-  <div className="nav-icon">
-<ul>
-<li>LeaderBoard</li>
-<li>SearchBar</li>
-  <li>Random Fight</li>
-
-</ul>
-</div>
-</div>
-<div className="header-container">
-<img src="src/images/pokemonhero.jpg" alt="pokemon" />
-
-</div>
-</>
-)
-} 
+  return (
+    <>
+      <div className="nav-container">
+        <div className="image">
+          <img src="src/images/pokemonlogo.png" alt="" />
+          <p>POKEFIGHT</p>
+        </div>
+        <div className="nav-icon">
+          <ul>
+            <Link to="/pokemon">
+              <h5> Pokemons</h5>
+            </Link>
+            <li>Leaderboard</li>
+            <li>Searchbar</li>
+            <li>Random Fight</li>
+          </ul>
+        </div>
+      </div>
+    </>
+  );
+};
 export default Navbar;

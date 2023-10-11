@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import PokemonImage from "./PokemonImage";
 import "./CSS/Getallpokemons.css";
 import Search from "./Search";
+
 export default function Getallpokemons() {
   const [pokemons, setPokemons] = useState([]);
   const [pokedex, setPokedex] = useState(null);
@@ -41,7 +42,7 @@ export default function Getallpokemons() {
       <div className="all_poke">
         {pokemons &&
           pokemons.map(({ name, url, type }) => (
-            <div className="Pokemon">
+            <div className="Pokemon" key={pokemons.id}>
               {/* <li key={url}>{name}</li> */}
               <h2>
                 <Link
