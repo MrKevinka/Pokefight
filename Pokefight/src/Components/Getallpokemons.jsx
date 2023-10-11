@@ -2,6 +2,11 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import PokemonImage from "./PokemonImage";
 
+import "./CSS/Getallpokemons.css";
+import Search from "./Search";
+
+
+
 export default function Getallpokemons() {
   const [pokemons, setPokemons] = useState([]);
   const [pokedex, setPokedex] = useState(null);
@@ -9,7 +14,8 @@ export default function Getallpokemons() {
   useEffect(() => {
     async function fetchData() {
       const response = await fetch(
-        "https://pokeapi.co/api/v2/pokemon?limit=50"
+        "https://pokeapi.co/api/v2/pokemon?limit=151"
+
       );
       const data = await response.json();
 
@@ -20,9 +26,14 @@ export default function Getallpokemons() {
     fetchData();
   }, []);
 
+
   return (
     <>
-      <h1>Pokemon List</h1>
+      <div className="heading_pokedex">
+        <h1>Pokédex</h1>
+        <h3>Choose your Pokémon!</h3>
+      </div>
+      <Search />
 
       {/* {pokemon.map((pokemon) => (
         <div key={pokemon.id}>
@@ -34,20 +45,26 @@ export default function Getallpokemons() {
         </div>
       ))} */}
 
-      <ul>
+
+      <div className="all_poke">
         {pokemons &&
           pokemons.map(({ name, url, type }) => (
-            <>
+            <div className="Pokemon" key={pokemons.id}>
               {/* <li key={url}>{name}</li> */}
-              {/* <Link to={`/Pokemon/${name}/${type}`}> */}
-              <Link to={`/Pokemon/${name}`}>
-                <h2>{name}</h2>
-              </Link>
+              <h2>
+                <Link
+                  to={`/Pokemon/${name}/${type}`}
+                  style={{ color: "white" }}
+                >
+                  {name.toUpperCase()}
+                </Link>
+              </h2>
               <PokemonImage pokemonName={name} />
               {/* <li> <img src={pokemons.sprites.front_default}  alt={name} /></li>  */}
-            </>
+            </div>
           ))}
-      </ul>
+      </div>
+
     </>
   );
 }

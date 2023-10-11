@@ -33,6 +33,7 @@ a {
 .socialmedia {
   display: flex;
   flex-direction: row;
+  margin: 1%;
 }
 .socialmedia img {
   width: 80%;
