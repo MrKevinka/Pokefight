@@ -1,5 +1,4 @@
 /****-----Navbar---****/
-@import 'normalize.css';
 
 .nav-bar-link{
   color: black;
@@ -17,13 +16,14 @@
  }
  .navbar li{
   font-size: 2rem;
+  font-weight: bold;
 
  }
  .nav-container{
-  background-color: whitesmoke;
+   background-color: blanchedalmond;
  }
- .header-container img{
-    min-width: 600px;
-    max-height: 90%;
+ .header-container img {
+max-width: 100%;
  }
+ 
  

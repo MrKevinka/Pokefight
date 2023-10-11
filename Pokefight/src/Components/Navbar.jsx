@@ -9,17 +9,18 @@ return (
   
 <ul className="navbar">
 <li><NavLink className="nav-bar-link"  to = "/"></NavLink></li>
+<li><NavLink className="nav-bar-link" to="/Homepage">Homepage</NavLink></li>
 <li><NavLink className="nav-bar-link" to="/Leaderboard">LeaderBoard</NavLink></li>
 <li><NavLink className="nav-bar-link" to="/Randomfight">Random Fight</NavLink></li>
   <li><NavLink className="nav-bar-link" to="/Searchbar">SearchBar</NavLink></li>
-
 </ul>
-
 </div>
 <div className="header-container">
-<img src="src/images/pokemonhero.jpg" alt="pokemon" />
+<img src="Pokefight/src/images/heroimage.jpg" alt="pokemon" />
 
-</div> 
+
+</div>
+
 </>
 
 )
