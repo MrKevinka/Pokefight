@@ -259,7 +259,7 @@ export default function PokemonPage() {
           </button>
         </div>
         <div className="fighter">
-          <h1>{computerData ? computerPokemonName.toUpperCase() : null}</h1>
+          <h1>{computerData ? computerData.data.name.toUpperCase() : null}</h1>
           <img
             className="zoom-image"
             src={computerData ? computerData.data.sprites.front_default : null}
@@ -303,6 +303,7 @@ export default function PokemonPage() {
         Your browser does not support the audio element.
       </audio>
 
+
       <div className="results">
         {winStatus ? <h1>{winStatus}</h1> : <h1>Waiting for a fight...</h1>}
       </div>
@@ -325,6 +326,18 @@ export default function PokemonPage() {
           playerWin()
         ) : computerWinState ? (
           computerWin()
+
+      {/* <div className="results">
+        {computerData &&
+        playerPokemonAttack + playerPokemonSpeed >
+          computerData.data.stats[1].base_stat +
+            computerData.data.stats[5].base_stat ? (
+          <h1>Player win</h1>
+        ) : playerPokemonAttack + playerPokemonSpeed <
+          computerData.data.stats[1].base_stat +
+            computerData.data.stats[5].base_stat ? (
+          <h1>Computer Win</h1>
+
         ) : (
           <h1>Tie!</h1>
         )}

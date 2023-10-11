@@ -21,20 +21,19 @@ function Leaderboard() {
 
   return (
     <>
-      {users.map((user) => {
-        return (
-          <div
-            key={user._id}
-            className="leaderboard-user-container"
-            style={{ display: "flex", justifyContent: "space-between" }}
-          >
-            <h2>{user.username}</h2>
-            <h2>{user.score}</h2>
-            <h2>{user.game_lost}</h2>
-            <h2>{user.game_won}</h2>
-          </div>
-        );
-      })}
+      <h1 className="top">Leaderboard</h1>
+      <div className="leader">
+        {users.map((user) => {
+          return (
+            <div key={user._id} className="leaderboard-user-container">
+              <h3>{user.username}</h3>
+              <h3>Score: {user.score}</h3>
+              <h3>Wins: {user.game_won}</h3>
+              <h3>Lost: {user.game_lost}</h3>
+            </div>
+          );
+        })}
+      </div>
     </>
   );
 }
