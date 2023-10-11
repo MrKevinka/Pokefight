@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { Button, Modal } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 
-export default function EnterYourNameModule({ id }) {
+export default function EnterYourNameModule() {
   const [user, setUser] = useState();
   const [modalState, setModal] = useState(false);
   const [input, setInput] = useState();
@@ -63,8 +63,18 @@ export default function EnterYourNameModule({ id }) {
             ></input>
           </Modal.Body>
           <Modal.Footer>
-            <Button onClick={() => registerUser(input)}>Save</Button>
-            <Button onClick={() => handleClose()}>Close</Button>
+            <Button
+              className="btn btn-round b-level-1 b-type-4"
+              onClick={() => registerUser(input)}
+            >
+              Save
+            </Button>
+            <Button
+              className="btn btn-round b-level-1 b-type-4"
+              onClick={() => handleClose()}
+            >
+              Close
+            </Button>
           </Modal.Footer>
         </Modal>
       ) : null}
@@ -82,15 +92,20 @@ export default function EnterYourNameModule({ id }) {
           <h1>Welcome to Pokefight, Stinky Guest</h1>
         )}
         {!user ? (
-          <Button onClick={handleShow}>Register with your username</Button>
+          <Button
+            className="btn btn-round b-level-1 b-type-4"
+            onClick={handleShow}
+          >
+            Register with your username
+          </Button>
         ) : null}
         {user ? (
-          <Button>
+          <Button className="btn btn-round b-level-1 b-type-4">
             <NavLink to={`/pokemon/${id}`}>Pick random fighter</NavLink>
           </Button>
         ) : null}
         {user ? (
-          <Button>
+          <Button className="btn btn-round b-level-1 b-type-4">
             <NavLink to="/pokemon">Pick your fighter</NavLink>
           </Button>
         ) : null}

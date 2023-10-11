@@ -6,9 +6,7 @@ import "./CSS/Fight.css";
 import "./CSS/pokeball.css";
 import PokemonThemeAudio from "../sounds/Pokemon-Theme-Song.mp3";
 
-
-
-function PokemonPage() {
+export default function PokemonPage() {
   const { name } = useParams();
   const [computerData, setComputerData] = useState(null);
   const [pokemonData, setPokemonData] = useState(null);
@@ -29,16 +27,9 @@ function PokemonPage() {
   const [computerPokemonDefense, setComputerPokemonDefense] = useState(0);
   const [computerPokemonSpeed, setComputerPokemonSpeed] = useState(0);
 
-
-  const playerWin = () => {
-    return <h1>🎉Player Wins!🎉</h1>;
-  };
-  const computerWin = () => {
-    return <h1>🎉Computer Wins!🎉</h1>;
-  };
-
   const draw = () => {
     return <h1>🎉It's a Draw!🎉</h1>;
+  };
 
   const playerWin = async () => {
     const user = JSON.parse(sessionStorage.getItem("user"));
@@ -70,7 +61,7 @@ function PokemonPage() {
     }
     const updatedUser = JSON.parse(sessionStorage.getItem("user"));
     console.log(updatedUser);
-    return <p>Player Wins!</p>;
+    return <h1>🎉Player Wins!🎉</h1>;
   };
   const computerWin = async () => {
     const user = JSON.parse(sessionStorage.getItem("user"));
@@ -101,7 +92,7 @@ function PokemonPage() {
     }
     const updatedUser = JSON.parse(sessionStorage.getItem("user"));
     console.log(updatedUser);
-    return <p>Computer Wins!</p>;
+    return <h1>🎉Computer Wins!🎉</h1>;
   };
 
   useEffect(() => {
@@ -129,8 +120,6 @@ function PokemonPage() {
     }
   }
 
-
-
   const weightConverter = (weight) => {
     return Math.floor(weight / 10) + ".0 kg.";
   };
@@ -140,7 +129,7 @@ function PokemonPage() {
   };
 
   return (
-<>
+    <>
       <div className="fight-container">
         {pokemonData && (
           <div className="fighter">
@@ -195,59 +184,37 @@ function PokemonPage() {
 
               const randomPokemonId = Math.floor(Math.random() * 898) + 1;
               await new Promise((resolve) => setTimeout(resolve, 100));
-              await axios
-                .get(`https://pokeapi.co/api/v2/pokemon/${name}`)
-                .then((response) => {
-                  console.log(response);
-                  setPlayerPokemonName(
-                    (playerPokemonName) => response.data.name
-                  );
-                  setPlayerPokemonImage(
-                    (playerPokemonImage) => response.data.sprites.front_default
-                  );
-                  setPlayerPokemonAttack(
-                    (playerPokemonAttack) =>
-                      response.data.stats.find(
-                        ({ stat }) => stat.name === "attack"
-                      )?.base_stat
-                  );
-                  setPlayerPokemonDefense(
-                    (playerPokemonDefense) => response.data.stats.defense
-                  );
-                  setPlayerPokemonSpeed(
-                    (playerPokemonSpeed) =>
-                      response.data.stats.find(
-                        ({ stat }) => stat.name === "speed"
-                      )?.base_stat
-                  );
-                });
+              // await axios
+              //   .get(`https://pokeapi.co/api/v2/pokemon/${name}`)
+              //   .then((response) => {
+              //     console.log(response);
+              //     setPlayerPokemonName(
+              //       (playerPokemonName) => response.data.name
+              //     );
+              //     setPlayerPokemonImage(
+              //       (playerPokemonImage) => response.data.sprites.front_default
+              //     );
+              //     setPlayerPokemonAttack(
+              //       (playerPokemonAttack) =>
+              //         response.data.stats.find(
+              //           ({ stat }) => stat.name === "attack"
+              //         )?.base_stat
+              //     );
+              //     setPlayerPokemonDefense(
+              //       (playerPokemonDefense) => response.data.stats.defense
+              //     );
+              //     setPlayerPokemonSpeed(
+              //       (playerPokemonSpeed) =>
+              //         response.data.stats.find(
+              //           ({ stat }) => stat.name === "speed"
+              //         )?.base_stat
+              //     );
+              //   });
               await new Promise((resolve) => setTimeout(resolve, 100));
               await axios
                 .get(`https://pokeapi.co/api/v2/pokemon/${randomPokemonId}`)
                 .then((response) => {
                   console.log(response);
-                  setComputerPokemonName(
-                    (computerPokemonName) => response.data.name
-                  );
-                  setComputerPokemonImage(
-                    (computerPokemonImage) =>
-                      response.data.sprites.front_default
-                  );
-                  setComputerPokemonAttack(
-                    (computerPokemonAttack) =>
-                      response.data.stats.find(
-                        ({ stat }) => stat.name === "attack"
-                      )?.base_stat
-                  );
-                  setComputerPokemonDefense(
-                    (computerPokemonDefense) => response.data.stats.defense
-                  );
-                  setComputerPokemonSpeed(
-                    (computerPokemonSpeed) =>
-                      response.data.stats.find(
-                        ({ stat }) => stat.name === "speed"
-                      )?.base_stat
-                  );
                   setComputerData(response);
                 });
               playFromTwoMinutes();
@@ -260,7 +227,7 @@ function PokemonPage() {
           <h1>{computerData ? computerPokemonName.toUpperCase() : null}</h1>
           <img
             className="zoom-image"
-            src={computerPokemonImage}
+            src={computerData ? computerData.data.sprites.front_default : null}
             alt="Your Enemey is about to apporach!"
           ></img>
 
@@ -278,8 +245,14 @@ function PokemonPage() {
               Type: {computerData ? computerData.data.types[0].type.name : null}
               {", "}
             </p>
-            <p>Attack: {computerPokemonAttack}</p>
-            <p>Speed: {computerPokemonSpeed}</p>
+            <p>
+              Attack:{" "}
+              {computerData ? computerData.data.stats[1].base_stat : null}
+            </p>
+            <p>
+              Speed:{" "}
+              {computerData ? computerData.data.stats[5].base_stat : null}
+            </p>
             <p>
               HP: {computerData ? computerData.data.stats[0].base_stat : null}
             </p>
@@ -305,6 +278,3 @@ function PokemonPage() {
     </>
   );
 }
-
-export default PokemonPage;
-

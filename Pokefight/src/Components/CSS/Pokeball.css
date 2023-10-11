@@ -64,6 +64,7 @@
 }
 
 .zoom-image {
+  margin: 5%;
   /* width: 300px; */
   transition: transform 3s ease-in-out; /* Apply smooth transition effect with a 2-second duration */
   /* animation: zoomInOut 4s infinite alternate; Create a continuous zoom in/out animation */
@@ -75,6 +76,6 @@
     transform: scale(1); /* Original size */
   }
   100% {
-    transform: scale(1.5); /* Zoomed in by 20% */
+    transform: scale(1.2); /* Zoomed in by 20% */
   }
 }

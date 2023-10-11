@@ -35,11 +35,10 @@ link {
       color: black;
 
     } */
-.nav-icon ul li {
+.nav-icon ul h5 {
   justify-content: space-around;
   display: flex;
-  color: white;
-  margin-left: 30px;
+  margin: 10px;
   border: 2px solid white;
 }
 .header-container {
@@ -62,4 +61,7 @@ link {
   justify-content: center;
   align-self: center;
   padding: 5%;
+}
+.register {
+  background-color: red;
 }

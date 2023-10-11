@@ -35,10 +35,10 @@
   margin: 10px;
   color: white;
   border-radius: 6px;
-  /* background: #0e0e85; */
+  background: #0e0e85;
 }
 button:hover {
-  /* background: #1f1fd1; */
+  background: #1f1fd1;
 }
 
 .name {

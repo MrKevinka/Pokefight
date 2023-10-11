@@ -6,6 +6,7 @@ import { Routes, Route } from "react-router-dom";
 import Getallpokemons from "./Components/Getallpokemons";
 import "./App.css";
 import Fight from "./Components/Fight";
+import CreatingUser from "./Components/CreatingUser";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/pokemon" element={<Getallpokemons />} />
         <Route path="/leaderboard" element={<Leaderboard />} />
         <Route path="/Pokemon/:name/:type" element={<Fight />} />
+        <Route path="/" element={<CreatingUser />} />
       </Routes>
       <Footer />
     </>
