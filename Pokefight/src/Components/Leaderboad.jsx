@@ -8,7 +8,7 @@ function Leaderboard() {
     const fetchUsers = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8080/leaderboard/users`
+          `https://pokefight-lk6g.onrender.com/leaderboard/users`
         );
         setUsers(response.data.users);
       } catch (error) {
@@ -18,8 +18,6 @@ function Leaderboard() {
 
     fetchUsers();
   }, []);
-
-  console.log(users);
 
   return (
     <>

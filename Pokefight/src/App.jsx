@@ -15,10 +15,54 @@ import Fight from "./Components/Fight";
 import Navbar from "./Components/Navbar";
 import Leaderboard from "./Components/Leaderboad";
 import EnterYourNameModule from "./Components/CreatingUser";
-import RandomPoke from "./Components/RandomPoke";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import PokeIndividualInfo from "./Components/PokeIndividualInfo";
+
+// import RandomPoke from "./Components/RandomPoke";
 
 function App() {
   const [{ theme, isDark }, toggleTheme] = useContext(ThemeContext);
+
+  const [poke, setPoke] = useState(null);
+  const [randomPokeState, setRandomPokeState] = useState(null);
+  const [fullPokeInfo, setFullPokeInfo] = useState(null);
+
+  //this part generates random poke and passes it down as props to show info about this pokemon on button click
+  const getRandomPoke = async () => {
+    const randomPokeIndex = Math.floor(Math.random() * 890);
+    console.log("random index is ", randomPokeIndex);
+    try {
+      const data = await axios.get(
+        `http://localhost:8080/pokemons/info/${randomPokeIndex}` //on this fetch it only works with localhost for now. idk why
+      );
+      const anotherData = await axios.get(
+        `http://pokefight-lk6g.onrender.com/pokemons/${randomPokeIndex}`
+      );
+
+      setPoke(data.data);
+      setRandomPokeState(anotherData.data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  useEffect(() => {
+    getRandomPoke();
+  }, []);
+
+  useEffect(() => {
+    setFullPokeInfo({
+      id: randomPokeState?.id,
+      pic: poke?.front_default,
+      baseinfo: randomPokeState?.base,
+      name: randomPokeState?.name.english,
+      type: randomPokeState?.type[0],
+    });
+    console.log("poke is", fullPokeInfo);
+  }, [poke]);
+
+  //element ends here
   return (
     <>
       {" "}
@@ -33,12 +77,24 @@ function App() {
       <Routes>
         <Route path="/pokemon" element={<Getallpokemons />} />
         <Route path="/leaderboard/users" element={<Leaderboard />} />
-        <Route path="/" element={<EnterYourNameModule />} />
 
-        {/* <Route path="/Pokemon/:name/:type" element={ <PokemonPage/>} /> */}
+        {fullPokeInfo ? (
+          <Route
+            path="/"
+            element={<EnterYourNameModule id={`${fullPokeInfo?.id}`} />}
+          />
+        ) : null}
+        {fullPokeInfo ? (
+          <Route
+            path="/pokemon/:id"
+            element={<PokeIndividualInfo pokemon={fullPokeInfo} />}
+          />
+        ) : null}
+
+        <Route path="/Pokemon/:name/:type" element={<PokemonPage />} />
 
         {/* <Route path="/Pokemon/:name/:type" element={<Fight />} /> */}
-        <Route path="/Pokemon/:name/:type" element={<Fight />} />
+        {/* <Route path="/Pokemon/fight" element={<Fight />} /> */}
       </Routes>
       {/* <Search /> */}
       <Footer />
