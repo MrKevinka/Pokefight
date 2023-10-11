@@ -14,18 +14,29 @@ export default function PokemonPage() {
 
   const [playerPokemonName, setPlayerPokemonName] = useState("Name");
   const [playerPokemonImage, setPlayerPokemonImage] = useState(0);
-  const [playerPokemonAttack, setPlayerPokemonAttack] = useState(0);
+  // const [playerPokemonAttack, setPlayerPokemonAttack] = useState(0);
   const [playerPokemonDefense, setPlayerPokemonDefense] = useState(0);
-  const [playerPokemonSpeed, setPlayerPokemonSpeed] = useState(0);
+  // const [playerPokemonSpeed, setPlayerPokemonSpeed] = useState(0);
 
   const [randomId1, setRandomId1] = useState();
   const [randomId2, setRandomId2] = useState(Math.floor(Math.random() * 898));
   const [winStatus, setWinStatus] = useState(null);
   const [computerPokemonName, setComputerPokemonName] = useState("Name");
   const [computerPokemonImage, setComputerPokemonImage] = useState(0);
-  const [computerPokemonAttack, setComputerPokemonAttack] = useState(0);
+  // const [computerPokemonAttack, setComputerPokemonAttack] = useState(0);
   const [computerPokemonDefense, setComputerPokemonDefense] = useState(0);
-  const [computerPokemonSpeed, setComputerPokemonSpeed] = useState(0);
+  // const [computerPokemonSpeed, setComputerPokemonSpeed] = useState(0);
+
+  let playerWinState = false;
+  let computerWinState = false;
+
+  let computerPokemonAttack = null;
+  let playerPokemonAttack = null;
+
+  let playerPokemonSpeed = null;
+  let computerPokemonSpeed = null;
+
+  let battleResultMessage = null;
 
   const draw = () => {
     return <h1>🎉It's a Draw!🎉</h1>;
@@ -35,12 +46,10 @@ export default function PokemonPage() {
     const user = JSON.parse(sessionStorage.getItem("user"));
 
     if (user) {
-      console.log("NOW USER GAME LOST", user);
-
       user.game_won++;
       user.score += 50;
 
-      console.log("NOW USER GAME LOST", user.score);
+      console.log("NOW USER GAME won", user.score);
 
       const newData = {
         game_won: user.game_won,
@@ -128,6 +137,28 @@ export default function PokemonPage() {
     return height / 10 + " m.";
   };
 
+  console.log("pokemon data is", pokemonData);
+
+  console.log("comp data is", computerData);
+
+  const handleBattleResult = async () => {
+    if (pokemonData && computerData) {
+      const playerTotal = playerPokemonAttack + playerPokemonSpeed;
+      const computerTotal = computerPokemonAttack + computerPokemonSpeed;
+
+      if (playerTotal > computerTotal) {
+        await playerWin();
+        battleResultMessage = "🎉Player Wins!🎉";
+      } else if (playerTotal < computerTotal) {
+        await computerWin();
+        battleResultMessage = "🎉Computer Wins!🎉";
+      } else {
+        <h1>Its a draw!!!!</h1>;
+      }
+    }
+    setWinStatus(battleResultMessage);
+  };
+
   return (
     <>
       <div className="fight-container">
@@ -151,15 +182,18 @@ export default function PokemonPage() {
               <p>
                 Attack:
                 {
-                  pokemonData.stats.find(({ stat }) => stat.name === "attack")
-                    ?.base_stat
+                  (playerPokemonAttack = pokemonData?.stats.find(
+                    ({ stat }) => stat.name === "attack"
+                  )?.base_stat)
                 }
               </p>
+
               <p>
                 Speed:
                 {
-                  pokemonData.stats.find(({ stat }) => stat.name === "speed")
-                    ?.base_stat
+                  (playerPokemonSpeed = pokemonData?.stats.find(
+                    ({ stat }) => stat.name === "speed"
+                  )?.base_stat)
                 }
               </p>
               <p>
@@ -218,6 +252,7 @@ export default function PokemonPage() {
                   setComputerData(response);
                 });
               playFromTwoMinutes();
+              handleBattleResult();
             }}
           >
             Fight
@@ -247,11 +282,15 @@ export default function PokemonPage() {
             </p>
             <p>
               Attack:{" "}
-              {computerData ? computerData.data.stats[1].base_stat : null}
+              {computerData
+                ? (computerPokemonAttack = computerData.data.stats[1].base_stat)
+                : null}
             </p>
             <p>
               Speed:{" "}
-              {computerData ? computerData.data.stats[5].base_stat : null}
+              {computerData
+                ? (computerPokemonSpeed = computerData.data.stats[5].base_stat)
+                : null}
             </p>
             <p>
               HP: {computerData ? computerData.data.stats[0].base_stat : null}
@@ -265,16 +304,31 @@ export default function PokemonPage() {
       </audio>
 
       <div className="results">
+        {winStatus ? <h1>{winStatus}</h1> : <h1>Waiting for a fight...</h1>}
+      </div>
+
+      {/* <button onClick={() => }>Find out a winner</button> */}
+
+      {/* <div className="results">
         {playerPokemonAttack + playerPokemonSpeed >
-        computerPokemonAttack + computerPokemonSpeed ? (
+        computerPokemonAttack + computerPokemonSpeed
+          ? // playerWin()
+            (playerWinState = true)
+          : playerPokemonAttack + playerPokemonSpeed <
+            computerPokemonAttack + computerPokemonSpeed
+          ? // computerWin()
+            (computerWinState = true)
+          : null}
+      </div>
+      <div>
+        {playerWinState ? (
           playerWin()
-        ) : playerPokemonAttack + playerPokemonSpeed <
-          computerPokemonAttack + computerPokemonSpeed ? (
+        ) : computerWinState ? (
           computerWin()
         ) : (
           <h1>Tie!</h1>
         )}
-      </div>
+      </div> */}
     </>
   );
 }

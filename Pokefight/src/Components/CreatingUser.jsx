@@ -44,6 +44,8 @@ export default function EnterYourNameModule() {
 
   console.log(user);
 
+  const randomID = Math.floor(Math.random() * 898);
+
   return (
     <>
       {modalState ? (
@@ -101,7 +103,8 @@ export default function EnterYourNameModule() {
         ) : null}
         {user ? (
           <Button className="btn btn-round b-level-1 b-type-4">
-            <NavLink to={`/pokemon/${id}`}>Pick random fighter</NavLink>
+            {/* <NavLink to={`/pokemon/${id}`}>Pick random fighter</NavLink> */}
+            <NavLink to={`/pokemon/${randomID}`}>Pick random fighter</NavLink>
           </Button>
         ) : null}
         {user ? (
