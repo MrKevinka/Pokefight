@@ -13,11 +13,12 @@ function App() {
     <>
       <Navbar />
       <Routes>
+        <Route path="/" element={<CreatingUser />} />
         <Route path="/pokemon" element={<Getallpokemons />} />
         <Route path="/leaderboard" element={<Leaderboard />} />
         <Route path="/Pokemon/:name/:type" element={<Fight />} />
-        <Route path="/" element={<CreatingUser />} />
       </Routes>
+
       <Footer />
     </>
   );

@@ -49,10 +49,13 @@ export default function EnterYourNameModule() {
       {modalState ? (
         <Modal show={modalState} onHide={() => handleClose()}>
           <Modal.Header closeButton>
-            <Modal.Title>Please enter your name</Modal.Title>
+            <Modal.Title className="m-title">
+              Please enter your name
+            </Modal.Title>
           </Modal.Header>
-          <Modal.Body>
+          <Modal.Body style={{ display: "flex", justifyContent: "center" }}>
             <input
+              style={{ width: "25%" }}
               type="text"
               onChange={(e) => {
                 setTimeout(() => {
@@ -62,7 +65,7 @@ export default function EnterYourNameModule() {
               }}
             ></input>
           </Modal.Body>
-          <Modal.Footer>
+          <Modal.Footer style={{ display: "flex", justifyContent: "center" }}>
             <Button
               className="btn btn-round b-level-1 b-type-4"
               onClick={() => registerUser(input)}
