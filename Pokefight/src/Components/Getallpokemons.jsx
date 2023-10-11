@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import PokemonImage from "./PokemonImage";
+
 import "./CSS/Getallpokemons.css";
 import Search from "./Search";
+
+
 
 export default function Getallpokemons() {
   const [pokemons, setPokemons] = useState([]);
@@ -12,6 +15,7 @@ export default function Getallpokemons() {
     async function fetchData() {
       const response = await fetch(
         "https://pokeapi.co/api/v2/pokemon?limit=151"
+
       );
       const data = await response.json();
 
@@ -22,6 +26,7 @@ export default function Getallpokemons() {
     fetchData();
   }, []);
 
+
   return (
     <>
       <div className="heading_pokedex">
@@ -29,6 +34,7 @@ export default function Getallpokemons() {
         <h3>Choose your Pokémon!</h3>
       </div>
       <Search />
+
       {/* {pokemon.map((pokemon) => (
         <div key={pokemon.id}>
         
@@ -38,6 +44,7 @@ export default function Getallpokemons() {
          
         </div>
       ))} */}
+
 
       <div className="all_poke">
         {pokemons &&
@@ -57,6 +64,7 @@ export default function Getallpokemons() {
             </div>
           ))}
       </div>
+
     </>
   );
 }

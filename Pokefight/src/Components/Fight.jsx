@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+
 import "./CSS/Fight.css";
 import "./CSS/pokeball.css";
 import PokemonThemeAudio from "../sounds/Pokemon-Theme-Song.mp3";
+
+
 
 function PokemonPage() {
   const { name } = useParams();
@@ -26,6 +29,7 @@ function PokemonPage() {
   const [computerPokemonDefense, setComputerPokemonDefense] = useState(0);
   const [computerPokemonSpeed, setComputerPokemonSpeed] = useState(0);
 
+
   const playerWin = () => {
     return <h1>🎉Player Wins!🎉</h1>;
   };
@@ -35,6 +39,69 @@ function PokemonPage() {
 
   const draw = () => {
     return <h1>🎉It's a Draw!🎉</h1>;
+
+  const playerWin = async () => {
+    const user = JSON.parse(sessionStorage.getItem("user"));
+
+    if (user) {
+      console.log("NOW USER GAME LOST", user);
+
+      user.game_won++;
+      user.score += 50;
+
+      console.log("NOW USER GAME LOST", user.score);
+
+      const newData = {
+        game_won: user.game_won,
+        score: user.score,
+      };
+      try {
+        const res = await axios.put(
+          `https://pokefight-lk6g.onrender.com/leaderboard/users/${user._id}`,
+
+          newData
+        );
+
+        sessionStorage.setItem("user", JSON.stringify(res.data.user));
+      } catch (err) {
+        console.error("Error updating player:", err);
+        console.log("Error  player:", user);
+      }
+    }
+    const updatedUser = JSON.parse(sessionStorage.getItem("user"));
+    console.log(updatedUser);
+    return <p>Player Wins!</p>;
+  };
+  const computerWin = async () => {
+    const user = JSON.parse(sessionStorage.getItem("user"));
+
+    if (user) {
+      console.log("NOW USER GAME LOST", user);
+
+      user.game_lost++;
+      user.score -= 50;
+
+      console.log("NOW USER GAME LOST", user.score);
+
+      const newData = {
+        game_lost: user.game_lost,
+        score: user.score,
+      };
+      try {
+        const res = await axios.put(
+          `https://pokefight-lk6g.onrender.com/leaderboard/users/${user._id}`,
+          newData
+        );
+
+        sessionStorage.setItem("user", JSON.stringify(res.data.user));
+      } catch (err) {
+        console.error("Error updating player:", err);
+        console.log("Error  player:", user);
+      }
+    }
+    const updatedUser = JSON.parse(sessionStorage.getItem("user"));
+    console.log(updatedUser);
+    return <p>Computer Wins!</p>;
   };
 
   useEffect(() => {
@@ -44,6 +111,7 @@ function PokemonPage() {
       .then((data) => setPokemonData(data))
       .catch((error) => console.error(error));
   }, [name]);
+
   function playFromTwoMinutes() {
     // Get a reference to the audio element
     const audio = document.getElementById("myAudio");
@@ -60,6 +128,9 @@ function PokemonPage() {
       }, 10000); // Adjust the timeout duration (in milliseconds) as needed
     }
   }
+
+
+
   const weightConverter = (weight) => {
     return Math.floor(weight / 10) + ".0 kg.";
   };
@@ -69,7 +140,7 @@ function PokemonPage() {
   };
 
   return (
-    <>
+<>
       <div className="fight-container">
         {pokemonData && (
           <div className="fighter">
@@ -236,3 +307,4 @@ function PokemonPage() {
 }
 
 export default PokemonPage;
+

@@ -11,6 +11,10 @@
   margin-left: 50%;
   margin-top: 20px;
 }
+link {
+  display: flex;
+  justify-content: space-around;
+}
 .image {
   margin-top: 20px;
   margin-left: 20px;
@@ -52,4 +56,10 @@
   align-items: center;
   margin: 0;
   padding: 0.5%;
+}
+.headline {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  padding: 5%;
 }
