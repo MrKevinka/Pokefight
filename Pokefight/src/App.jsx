@@ -7,6 +7,7 @@ import Getallpokemons from "./Components/Getallpokemons";
 import "./App.css";
 import Fight from "./Components/Fight";
 import CreatingUser from "./Components/CreatingUser";
+import PokeIndividualInfo from "./Components/PokeIndividualInfo";
 
 function App() {
   return (
@@ -17,6 +18,10 @@ function App() {
         <Route path="/pokemon" element={<Getallpokemons />} />
         <Route path="/leaderboard" element={<Leaderboard />} />
         <Route path="/Pokemon/:name/:type" element={<Fight />} />
+
+        <Route path="/" element={<CreatingUser />} />
+        <Route path="/pokemon/:id" element={<PokeIndividualInfo />} />
+
       </Routes>
 
       <Footer />
