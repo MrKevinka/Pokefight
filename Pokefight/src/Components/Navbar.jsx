@@ -1,25 +1,31 @@
 import React from "react";
+import { Link,  NavLink } from "react-router-dom";
+import "../App.css";
 
-const Navbar = () => {
-  return (
-    <>
-      <div className="nav-container">
-        <div className="image">
-          {/* <img src="src/images/pokemonlogo.png" alt="" /> */}
-          <p>POKEFIGHT</p>
-        </div>
-        <div className="nav-icon">
-          <ul>
-            <li>LeaderBoard</li>
-            <li>SearchBar</li>
-            <li>Random Fight</li>
-          </ul>
-        </div>
-      </div>
-      <div className="header-container">
-        {/* <img src="src/images/pokemonhero.jpg" alt="pokemon" /> */}
-      </div>
-    </>
-  );
-};
-export default Navbar;
+
+
+
+function NavBar() {
+return ( 
+ <>
+ <div className="nav-container">
+  
+<ul className="navbar">
+<li><NavLink className="nav-bar-link"  to = "/"></NavLink></li>
+<li><NavLink className="nav-bar-link" to="/Homepage">Homepage</NavLink></li>
+<li><NavLink className="nav-bar-link" to="/Leaderboard">LeaderBoard</NavLink></li>
+<li><NavLink className="nav-bar-link" to="/Randomfight">Random Fight</NavLink></li>
+  <li><NavLink className="nav-bar-link" to="/Searchbar">SearchBar</NavLink></li>
+</ul>
+</div>
+<div className="header-container">
+  <div className="img-class"> 
+  <img src="Heroimage.png" alt="image" />
+  </div>
+
+</div></>
+)
+} 
+export default NavBar;
+
+

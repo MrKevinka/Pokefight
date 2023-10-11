@@ -17,7 +17,13 @@ import PokemonPage from "./Components/Pokemonpage";
 import Fight from "./Components/Fight";
 
 import Navbar from "./Components/Navbar";
-import Leaderboard from "./Components/Leaderboad";
+
+import { BrowserRouter , Routes, Route, Navigate} from "react-router-dom";
+import Leaderboard from "./Components/Leaderboard";
+import Searchbar from "./Components/Searchbar";
+import Randomfight from "./Components/Randomfight";
+import Page404 from "./Components/Page404";
+import Homepage from "./Components/Homepage";
 import EnterYourNameModule from "./Components/CreatingUser";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -68,10 +74,33 @@ function App() {
 
 
 
+
 function App() {
   const [{ theme, isDark }, toggleTheme] = useContext(ThemeContext);
 
   return (
+
+     <div className="App">
+    
+    
+    <BrowserRouter>
+    <Navbar/>
+
+    <Routes>
+    
+      <Route path = "/" element = {<Navbar/>} />
+      <Route path = "/Homepage" element = {<Homepage/>} />
+      <Route path = "/Leaderboard" element = {<Leaderboard/>} />
+      <Route path = "/Searchbar" element = {<Searchbar/>} />
+      <Route path = "/Randomfight" element = {<Randomfight/>} />
+      <Route path = "/*" element = {<Navigate to = "/"/>} />
+      
+      </Routes>
+      </BrowserRouter>
+      
+      </div>
+    
+
     <>
       {" "}
       <div
@@ -119,6 +148,7 @@ function App() {
 
       <Footer />
     </>
+
   );
 
   
