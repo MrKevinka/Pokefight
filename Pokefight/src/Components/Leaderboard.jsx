@@ -2,8 +2,9 @@
 
 
 function Leaderboard () {
-    return<>
-    <h1>leaderpage</h1>
+    return
+    <> 
+   <h1>leaderboard page</h1>
     </>
 }
 export default Leaderboard;

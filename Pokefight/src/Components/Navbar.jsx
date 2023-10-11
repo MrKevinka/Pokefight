@@ -1,5 +1,7 @@
 import React from "react";
 import { Link,  NavLink } from "react-router-dom";
+import "../App.css";
+
 
 
 function NavBar() {
@@ -16,13 +18,11 @@ return (
 </ul>
 </div>
 <div className="header-container">
-<img src="Pokefight/src/images/heroimage.jpg" alt="pokemon" />
+  <div className="img-class"> 
+  <img src="Heroimage.png" alt="image" />
+  </div>
 
-
-</div>
-
-</>
-
+</div></>
 )
 } 
 export default NavBar;

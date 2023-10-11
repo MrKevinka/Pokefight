@@ -5,14 +5,15 @@
   text-decoration: none;
  }
  .nav-bar-link:hover{ 
-  color:blue
+  color:#4CAF50;
   
  }
  .navbar{
   display:flex;
   list-style: none;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center; 
+  margin-right: 60px;
  }
  .navbar li{
   font-size: 2rem;
@@ -20,10 +21,12 @@
 
  }
  .nav-container{
-   background-color: blanchedalmond;
+   background-color: #FFFFFF;
  }
- .header-container img {
-max-width: 100%;
+ .img-class img{
+  min-width: 1900px;
+  max-height:99%;
  }
+ 
  
  
