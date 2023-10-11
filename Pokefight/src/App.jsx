@@ -3,7 +3,6 @@ import "./App.css";
 
 import Navbar from "./Components/Navbar";
 
-
 import { Routes, Route } from "react-router-dom";
 import Getallpokemons from "./Components/Getallpokemons";
 import Pokemondetail from "./Components/Pokemondetail";
@@ -16,7 +15,7 @@ import PokemonImage from "./Components/PokemonImage";
 import PokemonPage from "./Components/Pokemonpage";
 import Fight from "./Components/Fight";
 
-import Navbar from "./Components/Navbar";
+// import Navbar from "./Components/Navbar";
 import Leaderboard from "./Components/Leaderboad";
 import EnterYourNameModule from "./Components/CreatingUser";
 import { useState, useEffect } from "react";
@@ -40,8 +39,11 @@ function App() {
       const data = await axios.get(
         `http://localhost:8080/pokemons/info/${randomPokeIndex}` //on this fetch it only works with localhost for now. idk why
       );
+      // const anotherData = await axios.get(
+      //   `https://pokefight-lk6g.onrender.com/pokemons/${randomPokeIndex}`
+      // );
       const anotherData = await axios.get(
-        `http://pokefight-lk6g.onrender.com/pokemons/${randomPokeIndex}`
+        `http://localhost:8080/pokemons/${randomPokeIndex}`
       );
 
       setPoke(data.data);
@@ -66,11 +68,6 @@ function App() {
     console.log("poke is", fullPokeInfo);
   }, [poke]);
 
-
-
-function App() {
-  const [{ theme, isDark }, toggleTheme] = useContext(ThemeContext);
-
   return (
     <>
       {" "}
@@ -81,7 +78,6 @@ function App() {
         <br />
       </div>{" "}
       <button onClick={toggleTheme}>Toggle Theme</button>
-
       <Navbar />
       <Routes>
         <Route path="/pokemon" element={<Getallpokemons />} />
@@ -100,13 +96,12 @@ function App() {
           />
         ) : null}
 
-        <Route path="/Pokemon/:name/:type" element={<PokemonPage />} />
+        {/* <Route path="/Pokemon/:name/" element={<PokemonPage />} /> */}
 
-        {/* <Route path="/Pokemon/:name/:type" element={<Fight />} /> */}
+        {/* <Route path="/Pokemon/:name/" element={<Fight />} /> */}
         {/* <Route path="/Pokemon/fight" element={<Fight />} /> */}
       </Routes>
-       <Search /> 
-
+      {/* <Search /> */}
       <Routes>
         <Route path="/pokemon" element={<Getallpokemons />} />
 
@@ -114,12 +109,11 @@ function App() {
 
         <Route path="/Pokemon/:name/:type" element={<Fight />} />
       </Routes>
-      <Search />
-      <Navbar />
-
+      {/* <Search /> */}
+      {/* <Navbar /> */}
       <Footer />
     </>
   );
+}
 
-  
 export default App;
