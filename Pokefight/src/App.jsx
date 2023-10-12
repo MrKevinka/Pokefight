@@ -38,11 +38,11 @@ function App() {
         </Routes>
 
         {/* <Footer /> */}
-        {loading && (
+        {/* {loading && (
           <div id="cover-spin">
             <Spinner />
           </div>
-        )}
+        )} */}
         {loading ? (
           <div id="cover-spin">
             <Spinner />

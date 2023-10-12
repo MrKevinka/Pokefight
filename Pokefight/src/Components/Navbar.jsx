@@ -32,9 +32,7 @@ const Navbar = () => {
   return (
     <>
       <div className="nav-container">
-        <div className="image">
-          {/* <img href="https://p7.hiclipart.com/preview/569/963/705/ash-ketchum-clip-art-pokeball-png-photos.jpg" alt="" /> */}
-        </div>
+        <div className="image"></div>
         <div className="nav-icon">
           <ul>
             <Link to="/">

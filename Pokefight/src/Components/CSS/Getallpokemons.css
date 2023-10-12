@@ -3,7 +3,7 @@
   flex: auto;
   flex-wrap: wrap;
   padding: 5%;
-  justify-content: space-around center;
+  justify-content: center;
   align-items: center;
   padding-bottom: 0;
   padding-top: 0;
@@ -35,6 +35,10 @@ h2:hover {
   justify-content: center;
   align-items: center;
   padding-top: 2%;
+}
+.heading_pokedex h3 {
+  display: flex;
+  justify-content: center;
 }
 .back {
   margin: 0;

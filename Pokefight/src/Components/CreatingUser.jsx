@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Button, Modal } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
-
+import { NavLink, Link } from "react-router-dom";
+import Spinner from "./Spinner";
 export default function EnterYourNameModule() {
   const [user, setUser] = useState();
   const [modalState, setModal] = useState(false);
@@ -93,12 +93,30 @@ export default function EnterYourNameModule() {
           flexDirection: "column",
           alignItems: "center",
           color: "pink",
+          marginBottom: "500px",
         }}
       >
         {user ? (
-          <h1>Welcome to Pokefight, {user.username}</h1>
+          <h1
+            style={{
+              color: "white",
+              backgroundColor: "#CC5803",
+              padding: "10px",
+              border: "2px solid white",
+              marginTop: "250px",
+            }}
+          >
+            Welcome to Pokefight, {user.username}
+          </h1>
         ) : (
-          <h1 style={{ backgroundColor: "blue" }}>
+          <h1
+            style={{
+              color: "white",
+              backgroundColor: "#CC5803",
+              padding: "10px",
+              border: "2px solid white",
+            }}
+          >
             Welcome to Pokefight, Stinky Guest
           </h1>
         )}
@@ -111,15 +129,26 @@ export default function EnterYourNameModule() {
           </Button>
         ) : null}
         {user ? (
-          <Button className="btn btn-round b-level-1 b-type-4">
-            {/* <NavLink to={`/pokemon/${id}`}>Pick random fighter</NavLink> */}
-            <NavLink to={`/pokemon/${randomID}`}>Pick random fighter</NavLink>
-          </Button>
+          // <Button className="btn btn-round b-level-1 b-type-4">
+          //   <NavLink to={`/pokemon/${randomID}`}>Pick random fighter</NavLink>
+          // </Button>
+          <Link to={`/pokemon/${randomID}`}>
+            <h5 className="btn btn-round b-level-1 b-type-4">
+              {" "}
+              Pick random fighter
+            </h5>
+          </Link>
         ) : null}
         {user ? (
-          <Button className="btn btn-round b-level-1 b-type-4">
-            <NavLink to="/pokemon">Pick your fighter</NavLink>
-          </Button>
+          // <Button className="btn btn-round b-level-1 b-type-4">
+          //   <NavLink to="/pokemon">Pick your fighter</NavLink>
+          // </Button>
+          <Link to="/pokemon">
+            <h5 className="btn btn-round b-level-1 b-type-4">
+              {" "}
+              Pick your fighter
+            </h5>
+          </Link>
         ) : null}
       </div>
     </>

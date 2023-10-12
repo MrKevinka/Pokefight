@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-
+import Spinner from "./Spinner";
 function Leaderboard() {
   const [users, setUsers] = useState([]);
-
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     const fetchUsers = async () => {
       try {
@@ -19,25 +19,41 @@ function Leaderboard() {
     fetchUsers();
   }, []);
 
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+  }, []);
+
   console.log("user list", users);
   users.sort((a, b) => b.score - a.score);
   console.log("sorted list", users);
 
   return (
     <>
-      <h1 className="top">Leaderboard</h1>
-      <div className="leader">
-        {users.map((user) => {
-          return (
-            <div key={user._id} className="leaderboard-user-container">
-              <h3>{user.username}</h3>
-              <h3>Score: {user.score}</h3>
-              <h3>Wins: {user.game_won}</h3>
-              <h3>Lost: {user.game_lost}</h3>
-            </div>
-          );
-        })}
-      </div>
+      <h1 className="top" style={{ fontSize: "3rem", color: "teal" }}>
+        Leaderboard
+      </h1>
+      {isLoading ? (
+        <div className="spinner">
+          <Spinner />
+        </div>
+      ) : (
+        <div className="leader">
+          {users.map((user) => {
+            return (
+              <div key={user._id} className="leaderboard-user-container">
+                <h3 style={{ color: "black", fontSize: "2rem" }}>
+                  {user.username}
+                </h3>
+                <h3 style={{ color: "teal" }}>Score: {user.score}</h3>
+                <h3 style={{ color: "darkGreen" }}>Wins: {user.game_won}</h3>
+                <h3 style={{ color: "darkRed" }}>Lost: {user.game_lost}</h3>
+              </div>
+            );
+          })}
+        </div>
+      )}
     </>
   );
 }

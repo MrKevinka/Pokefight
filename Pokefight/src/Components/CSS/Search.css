@@ -20,15 +20,6 @@
   width: 60%;
 }
 
-.back {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100vw;
-  padding-bottom: 5%;
-  padding-top: 2%;
-}
-
 .searchBtn {
   width: 80%;
   height: 30px;
