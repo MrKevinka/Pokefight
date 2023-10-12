@@ -34,6 +34,13 @@ link {
       font-size: 2rem;
       color: black;
 
+
+ 
+ 
+ 
+
+
+
     } */
 .nav-icon ul h5 {
   justify-content: space-around;
@@ -75,6 +82,7 @@ link {
   margin-top: 2%;
   justify-content: space-between;
 }
+
 
 .top {
   display: flex;
