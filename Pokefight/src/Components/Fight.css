@@ -1,0 +1,14 @@
+.pokefight-container {
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+    margin: 20px;
+  }
+  
+  .pokemon {
+    width: 100px;
+    height: 100px;
+    transition: opacity 0.5s ease-in-out;
+    position: absolute;
+  transition: left 1s linear;
+  }
