@@ -44,7 +44,6 @@ export default function PokemonPage() {
   };
 
   const playerWin = async () => {
-    // const user = JSON.parse(sessionStorage.getItem("user"));
     const user = JSON.parse(localStorage.getItem("user"));
 
     if (user) {
@@ -64,30 +63,23 @@ export default function PokemonPage() {
           newData
         );
 
-        // sessionStorage.setItem("user", JSON.stringify(res.data.user));
         localStorage.setItem("user", JSON.stringify(res.data.user));
       } catch (err) {
         console.error("Error updating player:", err);
         console.log("Error  player:", user);
       }
     }
-    // const updatedUser = JSON.parse(sessionStorage.getItem("user"));
     const updatedUser = JSON.parse(localStorage.getItem("user"));
 
     console.log(updatedUser);
     return <h1>🎉Player Wins!🎉</h1>;
   };
   const computerWin = async () => {
-    // const user = JSON.parse(sessionStorage.getItem("user"));
     const user = JSON.parse(localStorage.getItem("user"));
 
     if (user) {
-      console.log("NOW USER GAME LOST", user);
-
       user.game_lost++;
       user.score -= 50;
-
-      console.log("NOW USER GAME LOST", user.score);
 
       const newData = {
         game_lost: user.game_lost,
@@ -99,14 +91,12 @@ export default function PokemonPage() {
           newData
         );
 
-        // sessionStorage.setItem("user", JSON.stringify(res.data.user));
         localStorage.setItem("user", JSON.stringify(res.data.user));
       } catch (err) {
         console.error("Error updating player:", err);
         console.log("Error  player:", user);
       }
     }
-    // const updatedUser = JSON.parse(sessionStorage.getItem("user"));
     const updatedUser = JSON.parse(localStorage.getItem("user"));
 
     console.log(updatedUser);
@@ -146,10 +136,6 @@ export default function PokemonPage() {
     return height / 10 + " m.";
   };
 
-  console.log("pokemon data is", pokemonData);
-
-  console.log("comp data is", computerData);
-
   const handleBattleResult = async () => {
     if (pokemonData && computerData) {
       const playerTotal = playerPokemonAttack + playerPokemonSpeed;
@@ -166,7 +152,6 @@ export default function PokemonPage() {
       }
     }
     setWinStatus(battleResultMessage);
-    // winStatus = battleResultMessage;
   };
 
   return (
@@ -174,22 +159,36 @@ export default function PokemonPage() {
       <div className="fight-container">
         {pokemonData && (
           <div className="fighter">
-            <h1>{pokemonData.name.toUpperCase()}</h1>
+            <h1 style={{ color: "#1F1300" }}>
+              {pokemonData.name.toUpperCase()}
+            </h1>
             <img
               className="zoom-image"
               src={pokemonData.sprites.front_default}
               alt={pokemonData.name}
             />
-            <div className="data">
-              <p>ID:{pokemonData.id}</p>
-              <p>Height:{heightConverter(pokemonData.height)}</p>
-              <p>weight: {weightConverter(pokemonData.weight)}</p>
-              <p>
+            <div
+              className="data"
+              style={{
+                backgroundColor: "#CC5803",
+                padding: "7%",
+                opacity: "80%",
+                borderRadius: "5%",
+              }}
+            >
+              {/* <p style={{ fontSize: "1.5rem" }}>ID:{pokemonData.id}</p> */}
+              <p style={{ fontSize: "1.5rem" }}>
+                Height:{heightConverter(pokemonData.height)}
+              </p>
+              <p style={{ fontSize: "1.5rem" }}>
+                weight: {weightConverter(pokemonData.weight)}
+              </p>
+              <p style={{ fontSize: "1.5rem" }}>
                 Type: {pokemonData.types[0].type.name}
                 {", "}
                 {pokemonData.types[1] ? pokemonData.types[1].type.name : null}
               </p>
-              <p>
+              <p style={{ fontSize: "1.5rem" }}>
                 Attack:
                 {
                   (playerPokemonAttack = pokemonData?.stats.find(
@@ -198,7 +197,7 @@ export default function PokemonPage() {
                 }
               </p>
 
-              <p>
+              <p style={{ fontSize: "1.5rem" }}>
                 Speed:
                 {
                   (playerPokemonSpeed = pokemonData?.stats.find(
@@ -206,7 +205,7 @@ export default function PokemonPage() {
                   )?.base_stat)
                 }
               </p>
-              <p>
+              <p style={{ fontSize: "1.5rem" }}>
                 Hp:
                 {
                   pokemonData.stats.find(({ stat }) => stat.name === "hp")
@@ -228,32 +227,6 @@ export default function PokemonPage() {
 
               const randomPokemonId = Math.floor(Math.random() * 898) + 1;
               await new Promise((resolve) => setTimeout(resolve, 1000));
-              // await axios
-              //   .get(`https://pokeapi.co/api/v2/pokemon/${name}`)
-              //   .then((response) => {
-              //     console.log(response);
-              //     setPlayerPokemonName(
-              //       (playerPokemonName) => response.data.name
-              //     );
-              //     setPlayerPokemonImage(
-              //       (playerPokemonImage) => response.data.sprites.front_default
-              //     );
-              //     setPlayerPokemonAttack(
-              //       (playerPokemonAttack) =>
-              //         response.data.stats.find(
-              //           ({ stat }) => stat.name === "attack"
-              //         )?.base_stat
-              //     );
-              //     setPlayerPokemonDefense(
-              //       (playerPokemonDefense) => response.data.stats.defense
-              //     );
-              //     setPlayerPokemonSpeed(
-              //       (playerPokemonSpeed) =>
-              //         response.data.stats.find(
-              //           ({ stat }) => stat.name === "speed"
-              //         )?.base_stat
-              //     );
-              //   });
               await new Promise((resolve) => setTimeout(resolve, 1000));
               await axios
                 .get(`https://pokeapi.co/api/v2/pokemon/${randomPokemonId}`)
@@ -262,7 +235,6 @@ export default function PokemonPage() {
                   setComputerData(response);
                 });
               playFromTwoMinutes();
-              // await handleBattleResult();
               setWinStatus(null);
             }}
           >
@@ -276,40 +248,52 @@ export default function PokemonPage() {
           </button>
         </div>
         <div className="fighter">
-          <h1>{computerData ? computerData.data.name.toUpperCase() : null}</h1>
+          <h1 style={{ color: "#1F1300" }}>
+            {computerData ? computerData.data.name.toUpperCase() : null}
+          </h1>
           <img
             className="zoom-image"
             src={computerData ? computerData.data.sprites.front_default : null}
             alt="Your Enemey is about to apporach!"
           ></img>
 
-          <div className="data">
-            <p>ID:{computerData ? computerData.data.id : null}</p>
-            <p>
+          <div
+            className="data"
+            style={{
+              backgroundColor: "#CC5803",
+              padding: "7%",
+              opacity: "80%",
+              borderRadius: "5%",
+            }}
+          >
+            {/* <p style={{ fontSize: "1.5rem" }}>
+              ID:{computerData ? computerData.data.id : null}
+            </p> */}
+            <p style={{ fontSize: "1.5rem" }}>
               Height:{" "}
               {computerData ? heightConverter(computerData.data.height) : null}
             </p>
-            <p>
+            <p style={{ fontSize: "1.5rem" }}>
               weight:{" "}
               {computerData ? weightConverter(computerData.data.weight) : null}
             </p>
-            <p>
+            <p style={{ fontSize: "1.5rem" }}>
               Type: {computerData ? computerData.data.types[0].type.name : null}
               {", "}
             </p>
-            <p>
+            <p style={{ fontSize: "1.5rem" }}>
               Attack:{" "}
               {computerData
                 ? (computerPokemonAttack = computerData.data.stats[1].base_stat)
                 : null}
             </p>
-            <p>
+            <p style={{ fontSize: "1.5rem" }}>
               Speed:{" "}
               {computerData
                 ? (computerPokemonSpeed = computerData.data.stats[5].base_stat)
                 : null}
             </p>
-            <p>
+            <p style={{ fontSize: "1.5rem" }}>
               HP: {computerData ? computerData.data.stats[0].base_stat : null}
             </p>
           </div>
@@ -321,45 +305,11 @@ export default function PokemonPage() {
       </audio>
 
       <div className="results">
-        {/* {winStatus ? <h1>{winStatus}</h1> : <h1>Waiting for a fight...</h1>} */}
-        <h1>{winStatus || "Waiting for a fight..."}</h1>
-        {/* {winStatus && <h1>{winStatus}</h1>} */}
+        {/* <h1>{winStatus || "Waiting for a fight..."}</h1> */}
+        <h1 style={{ fontSize: "4rem", color: "#1F1300" }}>
+          {winStatus || null}
+        </h1>
       </div>
-
-      {/* <button onClick={() => }>Find out a winner</button> */}
-
-      {/* <div className="results">
-        {playerPokemonAttack + playerPokemonSpeed >
-        computerPokemonAttack + computerPokemonSpeed
-          ? // playerWin()
-            (playerWinState = true)
-          : playerPokemonAttack + playerPokemonSpeed <
-            computerPokemonAttack + computerPokemonSpeed
-          ? // computerWin()
-            (computerWinState = true)
-          : null}
-      </div>
-      <div>
-        {playerWinState ? (
-          playerWin()
-        ) : computerWinState ? (
-          computerWin()
-
-      {/* <div className="results">
-        {computerData &&
-        playerPokemonAttack + playerPokemonSpeed >
-          computerData.data.stats[1].base_stat +
-            computerData.data.stats[5].base_stat ? (
-          <h1>Player win</h1>
-        ) : playerPokemonAttack + playerPokemonSpeed <
-          computerData.data.stats[1].base_stat +
-            computerData.data.stats[5].base_stat ? (
-          <h1>Computer Win</h1>
-
-        ) : (
-          <h1>Tie!</h1>
-        )}
-      </div> */}
     </>
   );
 }
