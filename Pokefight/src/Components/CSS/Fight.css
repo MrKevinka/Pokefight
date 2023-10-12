@@ -1,0 +1,48 @@
+.fight-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+button.battle {
+  display: inline-block;
+  background-color: rgb(193, 4, 4);
+  border-radius: 10px;
+  border: 2px solid #cccccc;
+  color: #ffffff;
+  text-align: center;
+  font-size: 20px;
+  padding: 10px;
+  width: 100px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 20px;
+}
+.battle:hover {
+  background-color: #00b360;
+}
+.fighter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2%;
+  min-width: 25%;
+}
+.container-2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 2%;
+}
+.results {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.data {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}

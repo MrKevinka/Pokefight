@@ -1,42 +1,100 @@
-
 /****-----Navbar---****/
-
-.nav-bar-link{
-  color: black;
-  text-decoration: none;
- }
- .nav-bar-link:hover{ 
-  color:#4CAF50;
-  
- }
- .navbar{
-  display:flex;
-  list-style: none;
+.nav-container {
+  border-color: white;
+  display: flex;
+  /* background-color: rgba(25, 73, 232, 0.768); */
+  border-bottom: 2px solid grey;
+}
+.nav-icon {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 50%;
+  margin-top: 20px;
+}
+link {
+  display: flex;
   justify-content: space-around;
-  align-items: center; 
-  margin-right: 60px;
- }
- .navbar li{
+}
+.image {
+  margin-top: 20px;
+  margin-left: 20px;
+}
+.image img {
+  max-height: 160px;
+  max-width: 160px;
+}
+.nav-icon ul {
+  display: flex;
   font-size: 2rem;
-  font-weight: bold;
+  list-style: none;
+  justify-content: space-between;
+  align-items: center;
+}
+/* p {
+      font-size: 2rem;
+      color: black;
 
 
- }
- .nav-container{
-   background-color: #FFFFFF;
- }
- .img-class img{
-  min-width: 1900px;
-  max-height:99%;
- }
- .logo-container img{
-  min-width:200px;
-  max-height:200px; 
- }
  
  
  
 
 
 
+    } */
+.nav-icon ul h5 {
+  justify-content: space-around;
+  display: flex;
+  margin: 10px;
+  border: 2px solid white;
+}
+.header-container {
+  margin-top: 10px;
+}
+.header-container img {
+  max-width: 100%;
+  min-height: 1200px;
+}
+.image {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0.5%;
+}
+.headline {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  padding: 5%;
+}
 
+.leader {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.leaderboard-user-container {
+  display: flex;
+  border-bottom: 2px solid rgb(0, 0, 0);
+  margin-bottom: 1%;
+  margin-top: 2%;
+  justify-content: space-between;
+}
+
+
+.top {
+  display: flex;
+  justify-content: center;
+}
+h3 {
+  width: 25%;
+}
+
+.m-title {
+  display: flex;
+  justify-content: center;
+  margin-top: 5%;
+  font-size: 25px;
+}
