@@ -2,6 +2,7 @@ import { Button } from "react-bootstrap";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import { Link } from "react-router-dom";
 
 export default function PokeIndividualInfo() {
   const { id } = useParams();
@@ -46,7 +47,9 @@ export default function PokeIndividualInfo() {
           <h3>Speed: {pokemon?.stats[5].base_stat}</h3>
           <h3>Type: {pokemon?.types[0].type.name}</h3>
         </div>
-        <Button>FIGHT</Button>
+        <Link to={`/Pokemon/${pokemon?.name}/${pokemon?.types[0].type.name}`}>
+          <h5 className="btn btn-round b-level-1 b-type-4">FIGHT</h5>
+        </Link>
       </div>
     </div>
   );
