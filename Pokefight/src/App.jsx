@@ -20,37 +20,40 @@ function App() {
         setLoading(false);
       }, 3000);
     }
-  },[])
+  }, []);
   return (
     <>
-    <div className="hero">
-      {/* <Navbar />
-      <Routes>
-        <Route path="/" element={<CreatingUser />} />
-        <Route path="/pokemon" element={<Getallpokemons />} />
-        {/* <Route path="/pokemon" element={<GetAll />} /> */}
+      <div className="hero">
+        {/* <Navbar /> */}
+        <Routes>
+          {/* <Route path="/" element={<CreatingUser />} /> */}
+          {/* <Route path="/pokemon" element={<Getallpokemons />} /> */}
+          {/* <Route path="/pokemon" element={<GetAll />} />  */}
 
-        <Route path="/leaderboard/users" element={<Leaderboard />} />
-        <Route path="/Pokemon/:name/:type" element={<Fight />} />
+          {/* <Route path="/leaderboard/users" element={<Leaderboard />} /> */}
+          {/* <Route path="/Pokemon/:name/:type" element={<Fight />} /> */}
 
-        <Route path="/" element={<CreatingUser />} />
-        <Route path="/pokemon/:id" element={<PokeIndividualInfo />} />
+          {/* <Route path="/" element={<CreatingUser />} /> */}
+          {/* <Route path="/pokemon/:id" element={<PokeIndividualInfo />} /> */}
+        </Routes>
 
-      </Routes>
-
-      <Footer /> */}
-      {/* {loading && (
-        <div id="cover-spin">
-          <Spinner />
-        </div>
-      )} */}
-        {loading ? <div id="cover-spin">
-          <Spinner />
-        </div> : <LandingPage />}
-        </div>
-        <Footer className="footer"/>
+        {/* <Footer /> */}
+        {loading && (
+          <div id="cover-spin">
+            <Spinner />
+          </div>
+        )}
+        {loading ? (
+          <div id="cover-spin">
+            <Spinner />
+          </div>
+        ) : (
+          <LandingPage />
+        )}
+      </div>
+      <Footer className="footer" />
     </>
   );
-      }
+}
 
 export default App;

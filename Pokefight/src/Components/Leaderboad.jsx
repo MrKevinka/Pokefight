@@ -19,6 +19,10 @@ function Leaderboard() {
     fetchUsers();
   }, []);
 
+  console.log("user list", users);
+  users.sort((a, b) => b.score - a.score);
+  console.log("sorted list", users);
+
   return (
     <>
       <h1 className="top">Leaderboard</h1>
