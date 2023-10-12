@@ -15,7 +15,9 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/pokemon" element={<Getallpokemons />} />
-        <Route path="/leaderboard" element={<Leaderboard />} />
+        {/* <Route path="/pokemon" element={<GetAll />} /> */}
+
+        <Route path="/leaderboard/users" element={<Leaderboard />} />
         <Route path="/Pokemon/:name/:type" element={<Fight />} />
         <Route path="/" element={<CreatingUser />} />
         <Route path="/pokemon/:id" element={<PokeIndividualInfo />} />

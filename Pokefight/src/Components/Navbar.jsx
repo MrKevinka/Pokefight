@@ -17,7 +17,7 @@ const Navbar = () => {
             <Link to="/pokemon">
               <h5 className="btn btn-round b-level-1 b-type-4"> Pokemons</h5>
             </Link>
-            <Link to="/leaderboard">
+            <Link to="/leaderboard/users">
               <h5 className="btn btn-round b-level-1 b-type-4">Leaderboard</h5>
             </Link>
           </ul>
