@@ -27,6 +27,10 @@
   min-width: 1900px;
   max-height:99%;
  }
+ .logo-container img{
+  min-width:200px;
+  max-height:200px; 
+ }
  
  
  

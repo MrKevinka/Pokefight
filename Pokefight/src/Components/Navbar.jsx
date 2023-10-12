@@ -8,8 +8,12 @@ function NavBar() {
 return ( 
  <>
  <div className="nav-container">
+
   
 <ul className="navbar">
+<div className="logo-container">
+  <img src="pokemonlogo.png" alt="" />
+  </div>
 <li><NavLink className="nav-bar-link"  to = "/"></NavLink></li>
 <li><NavLink className="nav-bar-link" to="/Homepage">Homepage</NavLink></li>
 <li><NavLink className="nav-bar-link" to="/Leaderboard">LeaderBoard</NavLink></li>
