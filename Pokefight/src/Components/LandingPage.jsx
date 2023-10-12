@@ -12,28 +12,21 @@ import Spinner from "./Spinner";
 import React, { useState, useEffect } from "react";
 
 function LandingPage() {
- 
   return (
     <>
       <Navbar />
-      
 
-     
       <Routes>
-        <Route path="/" element={<CreatingUser />} />
+        {/* <Route path="/" element={<CreatingUser />} /> */}
         <Route path="/pokemon" element={<Getallpokemons />} />
-        <Route path="/leaderboard" element={<Leaderboard />} />
+        <Route path="/leaderboard/users" element={<Leaderboard />} />
         <Route path="/Pokemon/:name/:type" element={<Fight />} />
 
         <Route path="/" element={<CreatingUser />} />
         <Route path="/pokemon/:id" element={<PokeIndividualInfo />} />
-
       </Routes>
-
-     
-      
     </>
   );
-      }
+}
 
 export default LandingPage;

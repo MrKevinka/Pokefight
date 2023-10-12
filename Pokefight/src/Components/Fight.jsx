@@ -37,13 +37,15 @@ export default function PokemonPage() {
   let computerPokemonSpeed = null;
 
   let battleResultMessage = null;
+  // let winStatus = null;
 
   const draw = () => {
     return <h1>🎉It's a Draw!🎉</h1>;
   };
 
   const playerWin = async () => {
-    const user = JSON.parse(sessionStorage.getItem("user"));
+    // const user = JSON.parse(sessionStorage.getItem("user"));
+    const user = JSON.parse(localStorage.getItem("user"));
 
     if (user) {
       user.game_won++;
@@ -62,18 +64,22 @@ export default function PokemonPage() {
           newData
         );
 
-        sessionStorage.setItem("user", JSON.stringify(res.data.user));
+        // sessionStorage.setItem("user", JSON.stringify(res.data.user));
+        localStorage.setItem("user", JSON.stringify(res.data.user));
       } catch (err) {
         console.error("Error updating player:", err);
         console.log("Error  player:", user);
       }
     }
-    const updatedUser = JSON.parse(sessionStorage.getItem("user"));
+    // const updatedUser = JSON.parse(sessionStorage.getItem("user"));
+    const updatedUser = JSON.parse(localStorage.getItem("user"));
+
     console.log(updatedUser);
     return <h1>🎉Player Wins!🎉</h1>;
   };
   const computerWin = async () => {
-    const user = JSON.parse(sessionStorage.getItem("user"));
+    // const user = JSON.parse(sessionStorage.getItem("user"));
+    const user = JSON.parse(localStorage.getItem("user"));
 
     if (user) {
       console.log("NOW USER GAME LOST", user);
@@ -93,13 +99,16 @@ export default function PokemonPage() {
           newData
         );
 
-        sessionStorage.setItem("user", JSON.stringify(res.data.user));
+        // sessionStorage.setItem("user", JSON.stringify(res.data.user));
+        localStorage.setItem("user", JSON.stringify(res.data.user));
       } catch (err) {
         console.error("Error updating player:", err);
         console.log("Error  player:", user);
       }
     }
-    const updatedUser = JSON.parse(sessionStorage.getItem("user"));
+    // const updatedUser = JSON.parse(sessionStorage.getItem("user"));
+    const updatedUser = JSON.parse(localStorage.getItem("user"));
+
     console.log(updatedUser);
     return <h1>🎉Computer Wins!🎉</h1>;
   };
@@ -157,6 +166,7 @@ export default function PokemonPage() {
       }
     }
     setWinStatus(battleResultMessage);
+    // winStatus = battleResultMessage;
   };
 
   return (
@@ -252,10 +262,17 @@ export default function PokemonPage() {
                   setComputerData(response);
                 });
               playFromTwoMinutes();
-              handleBattleResult();
+              // await handleBattleResult();
+              setWinStatus(null);
             }}
           >
-            Fight
+            Get enemy
+          </button>
+          <button
+            className="battle"
+            onClick={async () => await handleBattleResult()}
+          >
+            Fight!
           </button>
         </div>
         <div className="fighter">
@@ -303,9 +320,10 @@ export default function PokemonPage() {
         Your browser does not support the audio element.
       </audio>
 
-
       <div className="results">
-        {winStatus ? <h1>{winStatus}</h1> : <h1>Waiting for a fight...</h1>}
+        {/* {winStatus ? <h1>{winStatus}</h1> : <h1>Waiting for a fight...</h1>} */}
+        <h1>{winStatus || "Waiting for a fight..."}</h1>
+        {/* {winStatus && <h1>{winStatus}</h1>} */}
       </div>
 
       {/* <button onClick={() => }>Find out a winner</button> */}

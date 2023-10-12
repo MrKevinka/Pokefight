@@ -26,7 +26,8 @@ export default function EnterYourNameModule() {
 
       setUser(res.data);
 
-      sessionStorage.setItem("user", JSON.stringify(res.data));
+      // sessionStorage.setItem("user", JSON.stringify(res.data));
+      localStorage.setItem("user", JSON.stringify(res.data));
 
       handleClose();
     } catch (err) {
@@ -36,7 +37,9 @@ export default function EnterYourNameModule() {
 
   useEffect(() => {
     // Check if user data is in session storage
-    const storedUser = sessionStorage.getItem("user");
+    // const storedUser = sessionStorage.getItem("user");
+    const storedUser = localStorage.getItem("user");
+
     if (storedUser) {
       setUser(JSON.parse(storedUser));
     }
@@ -89,14 +92,15 @@ export default function EnterYourNameModule() {
           justifyContent: "center",
           flexDirection: "column",
           alignItems: "center",
-          color:"pink"
-         
+          color: "pink",
         }}
       >
         {user ? (
-          <h1>Welcome to Pokefight,  {user.username}</h1>
+          <h1>Welcome to Pokefight, {user.username}</h1>
         ) : (
-          <h1 style={{backgroundColor:"blue"}}>Welcome to Pokefight, Stinky Guest</h1>
+          <h1 style={{ backgroundColor: "blue" }}>
+            Welcome to Pokefight, Stinky Guest
+          </h1>
         )}
         {!user ? (
           <Button
