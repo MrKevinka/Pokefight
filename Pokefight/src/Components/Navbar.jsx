@@ -6,8 +6,9 @@ const Navbar = () => {
     <>
       <div className="nav-container">
         <div className="image">
-          <img src="src/images/pokemonlogo.png" alt="" />
-          <p>POKEFIGHT</p>
+          
+          {/* <img href="https://p7.hiclipart.com/preview/569/963/705/ash-ketchum-clip-art-pokeball-png-photos.jpg" alt="" /> */}
+         
         </div>
         <div className="nav-icon">
           <ul>
@@ -23,6 +24,7 @@ const Navbar = () => {
           </ul>
         </div>
       </div>
+
     </>
   );
 };

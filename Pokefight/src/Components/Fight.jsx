@@ -217,7 +217,7 @@ export default function PokemonPage() {
               setRandomId2((randomId2) => Math.floor(Math.random() * 898));
 
               const randomPokemonId = Math.floor(Math.random() * 898) + 1;
-              await new Promise((resolve) => setTimeout(resolve, 100));
+              await new Promise((resolve) => setTimeout(resolve, 1000));
               // await axios
               //   .get(`https://pokeapi.co/api/v2/pokemon/${name}`)
               //   .then((response) => {
@@ -244,7 +244,7 @@ export default function PokemonPage() {
               //         )?.base_stat
               //     );
               //   });
-              await new Promise((resolve) => setTimeout(resolve, 100));
+              await new Promise((resolve) => setTimeout(resolve, 1000));
               await axios
                 .get(`https://pokeapi.co/api/v2/pokemon/${randomPokemonId}`)
                 .then((response) => {

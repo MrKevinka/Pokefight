@@ -89,12 +89,14 @@ export default function EnterYourNameModule() {
           justifyContent: "center",
           flexDirection: "column",
           alignItems: "center",
+          color:"pink"
+         
         }}
       >
         {user ? (
-          <h1>Welcome to Pokefight, {user.username}</h1>
+          <h1>Welcome to Pokefight,  {user.username}</h1>
         ) : (
-          <h1>Welcome to Pokefight, Stinky Guest</h1>
+          <h1 style={{backgroundColor:"blue"}}>Welcome to Pokefight, Stinky Guest</h1>
         )}
         {!user ? (
           <Button

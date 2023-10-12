@@ -8,11 +8,23 @@ import "./App.css";
 import Fight from "./Components/Fight";
 import CreatingUser from "./Components/CreatingUser";
 import PokeIndividualInfo from "./Components/PokeIndividualInfo";
+import Spinner from "./Components/Spinner";
+import React, { useState, useEffect } from "react";
+import LandingPage from "./Components/LandingPage";
 
 function App() {
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    if (loading) {
+      setTimeout(() => {
+        setLoading(false);
+      }, 3000);
+    }
+  },[])
   return (
     <>
-      <Navbar />
+    <div className="hero">
+      {/* <Navbar />
       <Routes>
         <Route path="/" element={<CreatingUser />} />
         <Route path="/pokemon" element={<Getallpokemons />} />
@@ -24,9 +36,19 @@ function App() {
 
       </Routes>
 
-      <Footer />
+      <Footer /> */}
+      {/* {loading && (
+        <div id="cover-spin">
+          <Spinner />
+        </div>
+      )} */}
+        {loading ? <div id="cover-spin">
+          <Spinner />
+        </div> : <LandingPage />}
+        </div>
+        <Footer className="footer"/>
     </>
   );
-}
+      }
 
 export default App;

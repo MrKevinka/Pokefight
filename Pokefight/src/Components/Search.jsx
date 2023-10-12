@@ -9,13 +9,13 @@ export default function Search() {
   const [Img, setImg] = useState("");
   const [Type, setType] = useState("");
   const [disName, setdisName] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (loading) {
       setTimeout(() => {
         setLoading(false);
-      }, 5000);
+      }, 3000);
     }
     async function getData() {
       try {
